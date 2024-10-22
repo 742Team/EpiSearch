@@ -1,9 +1,14 @@
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from crawler.crawler import crawl
-from indexing.index import build_index, search
-from indexing.reverse_search import reverse_search
+from indexing.indexing import build_index, search
+from indexing.reverse_serach import reverse_search
 
 def main():
-    crawl('https://github.com/', max_pages=20000)
+    crawl('https://github.com', max_pages=20)
     build_index()
     query = input('Enter search query: ')
     search_results = search(query)
