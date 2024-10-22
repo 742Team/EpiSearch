@@ -3,7 +3,7 @@ from indexing.index import build_index, search
 from indexing.reverse_search import reverse_search
 
 def main():
-    crawl('https://example.com', max_pages=20)
+    crawl('https://github.com/', max_pages=20000)
     build_index()
     query = input('Enter search query: ')
     search_results = search(query)

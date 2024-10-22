@@ -2,12 +2,13 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "your-api-key",
-  authDomain: "your-auth-domain",
-  projectId: "your-project-id",
-  storageBucket: "your-storage-bucket",
-  messagingSenderId: "your-messaging-sender-id",
-  appId: "your-app-id"
+  apiKey: "AIzaSyAzLeoEtJIFLQ66Xnqd4-mGftkmZR90dVc",
+  authDomain: "chat-3d13c.firebaseapp.com",
+  databaseURL: "https://chat-3d13c-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "chat-3d13c",
+  storageBucket: "chat-3d13c.appspot.com",
+  messagingSenderId: "827613007033",
+  appId: "1:827613007033:web:fb8574026f3e70ae501f68"
 };
 
 const app = initializeApp(firebaseConfig);
