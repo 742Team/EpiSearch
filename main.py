@@ -7,6 +7,8 @@ from crawler.crawler import crawl
 from indexing.indexing import build_index, search
 from indexing.reverse_serach import reverse_search
 
+print("Running...")
+
 def main():
     crawl('https://github.com', max_pages=20)
     build_index()

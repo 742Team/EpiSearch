@@ -5,7 +5,7 @@ from db.firebase import storePage
 
 visited = set()
 
-def crawl(url, max_pages=10):
+def crawl(url, max_pages=20000):
     to_visit = [url]
     while to_visit and len(visited) < max_pages:
         current_url = to_visit.pop(0)
