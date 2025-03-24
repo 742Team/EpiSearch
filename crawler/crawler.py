@@ -1,11 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
-from db.firebase import storePage
+from db.sqlite_db import storePage
 
 visited = set()
 
-def crawl(url, max_pages=20000):
+def crawl(url, max_pages=500000):
     to_visit = [url]
     while to_visit and len(visited) < max_pages:
         current_url = to_visit.pop(0)
@@ -17,10 +17,17 @@ def crawl(url, max_pages=20000):
                 continue
             visited.add(current_url)
             soup = BeautifulSoup(response.text, 'html.parser')
-            storePage(current_url, response.text)
+            
+            # Extraire les liens
+            links = []
             for link in soup.find_all('a', href=True):
                 absolute_url = urljoin(current_url, link['href'])
+                links.append(absolute_url)
                 if absolute_url not in visited:
                     to_visit.append(absolute_url)
+            
+            # Stocker la page avec ses liens
+            storePage(current_url, response.text, '', links)
+            print(f"Crawled: {current_url}")
         except Exception as e:
-            pass
+            print(f"Error crawling {current_url}: {e}")
